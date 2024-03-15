@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from . import my_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_6w37cs+&d6&@zlm@l^f5t@7kqzbgrw-koq4#2r9)ps=3lmc22'
-
+SECRET_KEY = my_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'content'
 ]
 
 MIDDLEWARE = [
@@ -73,20 +75,7 @@ WSGI_APPLICATION = 'fstaraitel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-       'NAME': 'db_fstaraitel',
-       'HOST': '221.163.82.22',
-       'USER': 'sa',
-       'PASSWORD': 'Fst23841!',
-       'OPTIONS': {
-           'driver': 'ODBC Driver 17 for SQL Server',
-           'host_is_server': True,
-           'unicode_results': True,
-        }
-    }
-}
+DATABASES = my_settings.DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
